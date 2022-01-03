@@ -154,6 +154,9 @@ const myPrint = function(a, b, res){
  * - необходимо изменить год выпуска автомобиля, установив в качестве значения текущий год
  * - если сеттеру used присвоено значение 'used', ничего делать не нужно
  */
+function fullInfo(){
+  return `${this.name} ${this.model}, ${this.engine}cc, year ${this.year}, ${this.used}`;
+}
 let currentYear = new Date().getFullYear();
 let car = {
   engine: 2000,
@@ -166,9 +169,7 @@ let car = {
   set used(value){
     if (value === 'new' && this.year !== currentYear) this.year = currentYear;
   },
-  info() {
-    return `${car.name} ${car.model}, ${car.engine}CC, year ${car.year}, ${car.used}`;
-  }
+  info: fullInfo,
 };
 
 let car2 = {
@@ -182,9 +183,7 @@ let car2 = {
   set used(value){
     if (value === 'new' && this.year !== currentYear) this.year = currentYear;
   },
-  info() {
-    return `${car2.name} ${car2.model}, ${car2.engine}CC, year ${car2.year}, ${car2.used}`;
-  }
+  info: fullInfo,
 }
 
 console.log(car.info()); // Chevrolet Lacetti, 2000cc, year 2010, used
